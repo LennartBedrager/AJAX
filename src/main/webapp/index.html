@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>AJAX demo!</h1>
+        <h3 id="time"></h3>
+        <h3 id="err" style="color:red"></h3>
+        
+        <script>
+            
+            fetch("XsimpleAPI")
+                    .then(res =>{
+                        if(res.ok){
+                            res.text();
+                        }else{
+                         throw new Error("Upps: "+res.statusText);   
+                        }
+                        
+                    })
+                    .then(data => {
+                       document.getElementById("time").innerText = data; 
+                        
+                    })
+                            .catch(err => {
+                                document.getElementById("err").innerText = err;
+                    });
+            
+        </script>
+    </body>
+</html>
